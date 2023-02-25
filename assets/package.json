@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@jellyfish-dev/membrane-webrtc-js": "^0.4.5"
+  }
+}

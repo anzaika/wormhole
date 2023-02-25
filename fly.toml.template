@@ -1,0 +1,53 @@
+app = TODO: your app name goes here
+kill_signal = "SIGTERM"
+kill_timeout = 5
+processes = []
+
+[env]
+  PHX_HOST = TODO: your app host goes here
+  PORT = "8080"
+  HOST_IP = TODO: your app IP goes here
+
+[experimental]
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 1000
+    soft_limit = 1000
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
+
+[[services]]
+  internal_port = 49999
+  protocol = "udp"
+
+  [[services.ports]]
+    start_port = "49999"
+    end_port = "59999"
+
+[[services]]
+  internal_port = 49999
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = "49999"
