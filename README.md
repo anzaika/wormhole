@@ -47,6 +47,7 @@ Start by cloning the repository and running `fly launch`.
 You won't need a database or Redis for this app, so you can safely skip it.
 And after that:
 
+- `fly ips allocate-v4` to allocate a dedicated v4 IP
 - rename `fly.toml` -> `fly.toml.orig`
 - rename `fly.toml.template` -> `fly.toml`
 - use values from `fly.toml.orig` to fill up the `TODO:` values in `fly.toml`
